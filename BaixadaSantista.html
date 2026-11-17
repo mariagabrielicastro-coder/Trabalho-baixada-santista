@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baixada Santista — Cidades</title>
+  <style>
+    *, *::before, *::after {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      color: #eee;
+      overflow-x: hidden;
+      background: #060e18;
+    }
+
+    /* ── Background ── */
+    .bg {
+      position: fixed;
+      inset: 0;
+      background-image: url('img/AdobeStock_570688877.jpeg');
+      background-size: cover;
+      background-position: center;
+      filter: blur(10px) brightness(0.85);
+      transform: scale(1.08);
+      z-index: 0;
+    }
+
+    /* ── Botão Voltar ── */
+    .back-container {
+      position: fixed;
+      top: 28px;
+      left: 28px;
+      z-index: 999;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(253, 167, 19, 0.1);
+      border: 1px solid #fd9013;
+      color: #fd8413;
+      text-decoration: none;
+      padding: 11px 22px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+    }
+
+    .contact-btn:hover {
+      background: rgba(253, 109, 19, 0.2);
+      transform: scale(1.05);
+      box-shadow: 0 0 18px rgba(253, 191, 19, 0.3);
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 10;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 80px 30px 60px;
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      margin-bottom: 10px;
+      padding-top: 30px;
+      color: #fda713;
+    }
+
+    .header h1 {
+      font-size: clamp(48px, 9vw, 110px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      font-family: 'PP Pangram Sans Rounded Exbold', system-ui;
+
+    }
+
+    .header p {
+      margin-top: 14px;
+      font-size: clamp(13px, 1.5vw, 16px);
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: #fda713;
+      border-radius: 10px;
+      margin: 18px auto 50px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      text-decoration: none;
+      aspect-ratio: 4 / 3;
+      display: block;
+      cursor: pointer;
+      transition: transform 0.35s cubic-bezier(.25,.8,.25,1),
+                  box-shadow 0.35s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 10, 30, 0.147) 0%,
+        rgba(0, 10, 30, 0.2) 50%,
+        transparent 100%
+      );
+      transition: opacity 0.3s ease;
+    }
+
+    /* Conteúdo do card */
+    .card-body {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      transform: translateY(0);
+      transition: transform 0.35s ease;
+    }
+
+    .card-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+
+    /* Linha azul aparece no hover */
+    .card-line {
+      width: 0;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 10px;
+      margin-top: 8px;
+      transition: width 0.4s cubic-bezier(.25,.8,.25,1);
+      box-shadow: 0 0 8px var(--glow);
+    }
+
+    .card:hover .card-line {
+      width: 40px;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <div class="bg"></div>
+
+  <div class="back-container">
+    <a href="index.html" class="contact-btn">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="transform:rotate(180deg)">
+        <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Voltar
+    </a>
+  </div>
+
+  <div class="wrapper">
+
+    <header class="header">
+      <h1>BAIXADA SANTISTA</h1>
+      <div class="divider"></div>
+    </header>
+
+    <main>
+      <div class="grid">
+
+        <a class="card" href="Bertioga.html">
+          <img src="https://as2.ftcdn.net/v2/jpg/07/46/74/29/1000_F_746742907_LbZclmKKgNvITi9aWCBvu1AbdwI5EUNQ.jpg" alt="Bertioga" loading="lazy">
+          <div class="card-overlay"></div>
+          <div class="card-body">
+            <div class="card-name">Bertioga</div>
+            <div class="card-line"></div>
+            <span class="card-tag">
+
+
+                <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <a class="card" href="Peruibe.html">
+          <img src="https://t4.ftcdn.net/jpg/01/99/92/27/360_F_199922718_cWSFaheAcpHvxtbSjaZGFMbl8UXHZK52.jpg" alt="Peruíbe" loading="lazy">
+          <div class="card-overlay"></div>
+          <div class="card-body">
+            <div class="card-name">Peruíbe</div>
+            <div class="card-line"></div>
+            <span class="card-tag">
+
+
+                <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <a class="card" href="Cubatao.html">
+          <img src="https://t3.ftcdn.net/jpg/03/86/66/76/360_F_386667668_WZLO5KLI07Ssw5VpQWhTC75poyRA6ZVT.jpg" alt="Cubatão" loading="lazy">
+          <div class="card-overlay"></div>
+          <div class="card-body">
+            <div class="card-name">Cubatão</div>
+            <div class="card-line"></div>
+            <span class="card-tag">
+
+
+                <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <a class="card" href="Praia_Grande.html">
+          <img src="https://t4.ftcdn.net/jpg/09/10/46/21/360_F_910462175_fqGFE0yZxanQYGKZGqirtBGK51x2pdfl.jpg" alt="Praia Grande" loading="lazy">
+          <div class="card-overlay"></div>
+          <div class="card-body">
+            <div class="card-name">Praia Grande</div>
+            <div class="card-line"></div>
+            <span class="card-tag">
+
+
+                <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <a class="card" href="Guaruja.html">
+          <img src="https://t3.ftcdn.net/jpg/05/20/21/82/360_F_520218215_RJBe4EbKkERmypPQ5tOX5TrMTF5wQD9V.jpg" alt="Guarujá" loading="lazy">
+          <div class="card-overlay"></div>
+          <div class="card-body">
+            <div class="card-name">Guarujá</div>
+            <div class="card-line"></div>
+            <span class="card-tag">
+
+
+                <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <a class="card" href="Santos.html">
+          <img src="https://t3.ftcdn.net/jpg/02/55/86/42/360_F_255864262_1sgHdP9rYIXzjYnlrZuVx5qhkOrZdDUV.jpg" alt="Santos" loading="lazy">
+          <div class="card-overlay"></div>
+          <div class="card-body">
+            <div class="card-name">Santos</div>
+            <div class="card-line"></div>
+            <span class="card-tag">
+
+
+                <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <a class="card" href="Itanhaem.html">
+          <img src="https://t4.ftcdn.net/jpg/02/72/69/09/360_F_272690938_GAdjG0C9ePBmcP47WE5HU17mX0b7CySI.jpg" alt="Itanhaém" loading="lazy">
+          <div class="card-overlay"></div>
+          <div class="card-body">
+            <div class="card-name">Itanhaém</div>
+            <div class="card-line"></div>
+            <span class="card-tag">
+
+
+                <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <a class="card" href="Sao_Vicente.html">
+          <img src="https://t3.ftcdn.net/jpg/04/26/21/48/360_F_426214855_fvRI1dSOBWx2cX1kITh42WK5NuhmSzWy.jpg" alt="São Vicente" loading="lazy">
+          <div class="card-overlay"></div>
+          <div class="card-body">
+            <div class="card-name">São Vicente</div>
+            <div class="card-line"></div>
+            <span class="card-tag">
+
+
+                <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <a class="card" href="Mongagua.html">
+          <img src="https://t3.ftcdn.net/jpg/07/79/18/96/360_F_779189632_ilDd0OivQ4685d81ElboXFIozr6BGL2W.jpg" alt="Mongaguá" loading="lazy">
+          <div class="card-overlay"></div>
+          <div class="card-body">
+            <div class="card-name">Mongaguá</div>
+            <div class="card-line"></div>
+            <span class="card-tag">
+
+
+                <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

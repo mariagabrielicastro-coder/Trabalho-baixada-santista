@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peruíbe</title>
+  <style>
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      overflow: hidden;
+    }
+
+    .bg{
+        position: fixed;
+      inset: 0;
+      background-image: url(https://as2.ftcdn.net/v2/jpg/05/75/66/73/1000_F_575667385_keGjTkgL1UWzyjXbU4QwoyuOAXzqBpsL.jpg);
+      background-size: cover;
+      background-position: center;
+      filter: blur(5px);
+      transform: scale(1.1);
+      z-index: 0;
+      margin: 0;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.25) 0%,
+        rgba(0,0,0,0.05) 45%,
+        rgba(0,0,0,0.55) 100%
+      );
+    }
+
+    /* ── Logo da prefeitura como título ── */
+    .Portifolio {
+      padding-bottom: 5px;
+      padding-top: 20px;
+      z-index: 10;
+      position: relative;
+      text-align: center;
+      animation: titleReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+    }
+
+    .Portifolio img {
+      max-height: 200px;     /* ajusta o tamanho do logo aqui */
+      max-width: 80vw;
+      object-fit: contain;
+    }
+
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: #16b1ff;
+      border-radius: 10px;
+      margin: 25px auto 50px;
+    }
+
+    /* ── Topo / voltar ── */
+    .btn-voltar {
+        background: rgba(24, 209, 255, 0.35);
+      border: 1px solid rgba(25, 174, 255, 0.15);
+      position: fixed;
+      top: 24px;
+      left: 32px;
+      z-index: 100;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #ffffffa4;
+      text-decoration: none;
+      padding: 11px 22px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: background 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+    }
+
+    .btn-voltar:hover {
+      background: rgba(0, 132, 255, 0.383);
+      transform: scale(1.04);
+    }
+
+    /* ── Seções ── */
+    .section {
+      position: relative;
+      z-index: 2;
+      padding: clamp(60px, 10vh, 120px) clamp(20px, 6vw, 80px);
+    }
+
+    .topico {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #16b1ff;
+      text-align: center;
+      padding-bottom: 60px;
+      position: relative;
+    }
+
+    h3 {
+      color: #ffffff;
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding-left: 80px;
+      padding-top: 5px;
+      padding-bottom: 20px;
+    }
+
+    /* ── Grid de texto + imagem (estilo 2 colunas como na imagem) ── */
+    .duas-colunas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding: 0 80px;
+      position: absolute;
+      z-index: 2;
+    }
+
+    .coluna p {
+      color: #fff;
+      font-size: 19px;
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    /* ── Fotos da cidade ── */
+    .fotos-wrap {
+      display: flex;
+      gap: 24px;
+      padding: 20px 80px 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .foto-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .foto-item img {
+      width: 700px;
+      height: 800px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .foto-legenda {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.1em;
+      font-style: italic;
+    }
+
+    /* ── Rodapé da seção ── */
+    .nota-rodape {
+      padding: 10px 80px 40px;
+      font-size: 11px;
+      font-style: italic;
+      color: rgba(255,255,255,0.4);
+      position: relative;
+      z-index: 2;
+    }
+
+  </style>
+</head>
+<body>
+
+    <div class="bg"></div>
+
+  <!-- ══ Botão voltar ══════════════════════════════════════════════ -->
+  <a href="BaixadaSantista.html" class="btn-voltar">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M13 7H1M7 13L1 7l6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Voltar
+  </a>
+
+  <!-- ══ Logo da prefeitura ═══════════════════════════ -->
+  <div class="Portifolio">
+    <img src="img/peruibe.png" alt="Prefeitura de Bertioga">
+    <div class="divider"></div>
+  </div>
+
+  <!-- ══ SEÇÃO: HISTORIA ══════════════════════════════════════════════ -->
+  <section>
+    <h2 class="topico">Historia</h2>
+
+    <div class="duas-colunas">
+      <div class="coluna">
+        <h3>
+          A origem de Peruíbe está vinculada à história de São Vicente e, em especial, à trajetória dos jesuítas pelo litoral do Estado de São Paulo.
+          <br>
+          No século XVI, uma missão jesuítica estabeleceu-se no local que recebeu o nome de Aldeamento de São João Batista, ou São João da Aldeia, cujo objetivo, além de converter e pacificar os índios Carijós e Tamoios, que viviam ao sul da capitania de Itanhaém, era o de servir como pouso a viajantes. Situava-se em uma região estratégica na defesa contra investidas de corsários.
+          <br> 
+          No final do século XVIII, com a expulsão dos padres jesuítas, a aldeia passou a ser administrada pelos franciscanos o núcleo de Peruíbe entrou em declínio.
+          <br>
+          Só retomou o desenvolvimento como cidade balneária em meados do século XX, quando foi transformada por lei, em 18 de fevereiro de 1959, em distrito e município, com território desmembrado de Itanhaém. Peruíbe, em tupi-guarani, significa "no rio dos tubarões".
+          <br>
+          Consta, porém, de alguns documentos que esse nome estaria associado ao modo como José de Anchieta se referia ao lugar, chamando-o de Tapirema do Peru, por suas semelhanças com a região peruana, onde os jesuítas haviam enfrentado dificuldades no exercício da catequese.
+          
+        </h3>       
+         <h3><span class="foto-legenda">Fonte: Fundação SEADE - 2006</span></h3>
+      </div>
+
+    </div>
+
+    <!-- Fotos -->
+    <div class="fotos-wrap">
+      <div class="foto-item">
+
+        <span class="foto-legenda"></span>
+      </div>
+      <div class="foto-item">
+        <img src="https://www.viagensecaminhos.com/wp-content/uploads/2012/03/praia-peruibe.jpg" alt="Forte São João">
+        <span class="foto-legenda">Praia Central (Orla dos Coqueiros)</span>
+      </div>
+    </div>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script>
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown') {
+    lenis.scrollTo(window.scrollY + 200);
+  }
+  if (e.key === 'ArrowUp') {
+    lenis.scrollTo(window.scrollY - 200);
+  }
+}); 
+
+    const lenis = new Lenis({
+      duration: 1.4,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+      smoothTouch: false,
+      touchMultiplier: 2,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    const reveals = document.querySelectorAll('[data-reveal]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => entry.target.classList.add('is-visible'), delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+
+</body>
+</html>
